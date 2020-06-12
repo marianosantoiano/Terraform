@@ -1,19 +1,22 @@
 provider "aws" {
-  region     = "us-west-1"
-  access_key = "AccesKey"
-  secret_key = "SecretKey"
+region     = "us-west-1"
+access_key = "key"
+secret_key = "SecretKey"
 }
 resource "aws_instance" "web" {
-  ami           = "ami-aws"
-  instance_type = "t2.micro"
+ami           = "ami-aws"
+instance_type = "t2.micro"
 
-  tags = {
-    Name = "Name"
-  }
+tags = {
+  Name = "usr6-instance"
+ }
 }
 
-resource "aws_default_vpc" "default" {
+resource "aws_vpc" "main" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "dedicated"
+
   tags = {
-    Name = "Default_VPC"
+    Name = "main"
   }
 }
