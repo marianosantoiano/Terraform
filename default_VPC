@@ -1,0 +1,19 @@
+provider "aws" {
+  region     = "us-west-1"
+  access_key = "AccesKey"
+  secret_key = "SecretKey"
+}
+resource "aws_instance" "web" {
+  ami           = "ami-aws"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Name"
+  }
+}
+
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default_VPC"
+  }
+}
